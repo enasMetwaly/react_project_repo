@@ -1,0 +1,11 @@
+.mySearch{
+    width:90%;
+    margin:auto;
+    background-color: rgb(247, 243, 238);
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}

@@ -1,0 +1,24 @@
+nav {
+    background-color:rgb(255, 255, 136)  /* Replace with your desired color */
+  }
+  
+  .active {
+    color: rgb(182, 107, 107); /* Change the active link color to blue */
+    font-weight: bold; /* Make the active link bold */
+  }
+  ul{
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+link{
+  text-decoration: none;
+}
+
+ul li {
+  /* color: darkblue; */
+  margin: 5px;
+}
