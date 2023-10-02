@@ -3,6 +3,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import  { useState } from "react";
 import { useEffect } from 'react';
 import './header.css';
+import { FaHeart } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -13,7 +16,11 @@ const Header = () => {
     useEffect(() => {
       setActiveLink(location.pathname);
     }, [location]);
-  
+    const watchList = useSelector((state) => state.watchList.watchList);
+
+  // Calculate the count of movies in the watch list
+  const watchListCount = watchList.length;
+
   
 
     return(
@@ -34,7 +41,15 @@ const Header = () => {
             to="/watch-list"
             className={activeLink === "/watch-list" ? "active" : ""}
             >
-                <span><i class="fa fa-heart" aria-hidden="true"></i></span>
+                {/* <span><i class="fa fa-heart" aria-hidden="true"></i></span> */}
+                <FaHeart /> {/* Heart icon */}
+              {/* Display watchListCount if it's greater than 0 */}
+              {watchListCount > 0 && (
+                <span className="badge badge-pill badge-danger ml-1 text-info">
+                  {watchListCount}
+                </span>
+              )}
+
 
             </Link>
 

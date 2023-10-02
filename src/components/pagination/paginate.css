@@ -1,0 +1,14 @@
+.pagination .page-link {
+    padding: 0.25rem 0.5rem; /* Adjust the padding to control the button size */
+    font-size: 14px; /* Adjust the font size as needed */
+    height: 30px;
+  }
+  
+  /* Style the active page button separately, if desired */
+  .pagination .page-item.active .page-link {
+    background-color: #007bff; /* Customize the active page button background color */
+    border-color: #007bff; /* Customize the active page button border color */
+    color: #eeeeee; /* Customize the active page button text color */
+  }
+  
+  
