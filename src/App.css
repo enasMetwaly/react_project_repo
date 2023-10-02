@@ -1,6 +1,45 @@
-.App {
+/* .App {
   text-align: center;
+    background-color: #000000;
+  color: #ffffff;
+
+} */
+
+
+
+
+.light {
+  background-color: #ffffff;
+  color: #000000;
 }
+
+/* Dark Mode */
+.dark{
+  background-color: #000000;
+  color: #914040;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .App-logo {
   height: 40vmin;

@@ -22,7 +22,7 @@ const watchListSlice = createSlice({
       if (!isMovieInList) {
         state.watchList.push({ ...newMovie });
       } else {
-        // If the movie is already in the watch list, remove it.
+        // If the movie is already in the watch list, remove it
         state.watchList = state.watchList.filter((movie) => movie.id !== newMovie.id);
       }
     },

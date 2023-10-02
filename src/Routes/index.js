@@ -7,6 +7,9 @@ import MovieDetails from '../pages/MovieDetails'
 // import Register from '../pages/Register'
 import NotFound from '../pages/NotFound'
 import WatchList from '../pages/WatchList'
+import MovieSearch from '../components/search/search'
+ // Your search results component
+
 
 
 
@@ -16,6 +19,9 @@ export default function Router() {
             <Route path="/" element={<MovieList />} />
             <Route path="/movieDetails-details/:id" element={<MovieDetails />} />
             <Route path="/watch-list" element={<WatchList />} />
+            <Route path="/search" component={<MovieSearch/>} />
+
+            
             <Route path="*" element={<NotFound />} />
 
         </Routes>

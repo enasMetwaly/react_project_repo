@@ -1,16 +1,52 @@
 import React from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import  { useState } from "react";
-import { useEffect } from 'react';
 import './header.css';
 import { FaHeart } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
+import  { useContext } from "react";
+
+import { FaMoon } from "react-icons/fa"; // Import FaMoon from react-icons/fa
+
+
+import { useSelector, useDispatch } from 'react-redux';
+import { changeCurrentLang } from '../../store/slices/language'; 
+import { changeCurrentTheme } from '../../store/slices/theme';
+import { LanguageContext } from "../../context/language";
+
+import { ThemeContext } from "../../context/theme";
+import { useEffect } from 'react';
 
 
 
 
 
 const Header = () => {
+  const { contextLang ,  setContextLang } = useContext(LanguageContext)
+
+  const language = useSelector((state) => state.language.current_lang);
+  const dispatch = useDispatch();
+  const theme = useSelector((state) => state.theme.current_theme);
+
+  const { contextTheme ,  setContextTheme } = useContext(ThemeContext)
+
+  const [isMoonFilled, setIsMoonFilled] = useState(false);
+  const toggleTheme = () => {
+    setIsMoonFilled(!isMoonFilled);
+    setContextTheme(contextTheme === "light" ? "dark" : "light");
+  };
+
+
+
+  const handleLanguageChange = (event) => {
+    const newLanguage = event.target.value;
+    dispatch(changeCurrentLang(newLanguage));
+  }      
+
+  
+
+
+
+
     const [activeLink, setActiveLink] = useState("/");
     const location = useLocation();
     useEffect(() => {
@@ -52,6 +88,19 @@ const Header = () => {
 
 
             </Link>
+            <FaMoon
+              className={`moon-icon ${isMoonFilled ? "filled" : "hollow"}`}
+              onClick={toggleTheme}
+              size={32}
+            />
+                    <div className="language-switcher">
+                  <select value={contextLang} onChange={(e) => setContextLang(e.target.value)}>
+                    <option value="ar">Arabic</option>
+                    <option value="en">English</option>
+                  </select>
+                </div>
+
+
 
             </li>
 

@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axiosInstance from "../apis/config";
 import MovieCard from "../components/movies/movieCard";
+import Pagination from "../components/pagination/pagination";
+import { useNavigate } from 'react-router-dom';
 import Search from "../components/search/search";
-import Pagination from "../components/pagination/pagination"; // Import the Pagination component
+import MovieSearch from "../components/search/search";
+
+
 
 function MovieList() {
   const [moviesList, setMoviesList] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     axiosInstance
@@ -15,6 +23,7 @@ function MovieList() {
         params: {
           api_key: '95d9623074e3fd44965f1697794cc620',
           page: currentPage,
+          language: selectedLanguage,
         },
       })
       .then((res) => {
@@ -22,34 +31,48 @@ function MovieList() {
         setTotalPages(res.data.total_pages);
       })
       .catch((error) => console.log(error));
-  }, [currentPage]);
+  }, [currentPage, selectedLanguage]);
 
-  // Define a function to handle page changes
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearch = () => {
+    // Redirect to the search page with the search query
+    navigate(`/search?query=${searchQuery}`);
+  };
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
+  const handlePaginationChange = (newPage) => {
+    // Call the parent's handlePageChange function
+    handlePageChange(newPage);
+    // You can also add any other logic related to pagination here
+  };
+
+
   return (
-    <>
-      <Search />
+    <div>
+
       <div className="container">
-        <div className="row ">
-          {moviesList.map((movie) => {
-            return (
-              <div className="col-md-3 col-sm-6 my-3" key={movie.id}>
-                <MovieCard movieItem={movie} />
-              </div>
-            );
-          })}
+        <div className="row">
+          {moviesList.map((movie) => (
+            <div className="col-md-3 col-sm-6 my-3" key={movie.id}>
+              <MovieCard movieItem={movie} />
+              
+            </div>
+          ))}
         </div>
-        {/* Pass totalPages, currentPage, and onPageChange as props to Pagination */}
         <Pagination
           totalPages={totalPages}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
+
       </div>
-    </>
+    </div>
   );
 }
 

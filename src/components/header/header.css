@@ -22,3 +22,16 @@ ul li {
   /* color: darkblue; */
   margin: 5px;
 }
+.moon-icon {
+    color: white;
+    stroke: black; /* Set the stroke color to black */
+    stroke-width: 10; /* Adjust the stroke width as needed */
+  
+  }
+  
+  /* CSS for the filled moon icon (dark mode) */
+  .moon-icon.filled {
+    color: rgb(88, 85, 85); /* Change the color to your preferred dark mode color */
+    border-color: transparent; /* Remove the border when filled */
+  }
+  
