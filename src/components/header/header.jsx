@@ -71,40 +71,36 @@ const Header = () => {
                 <h5>Movie App</h5>
             </Link>
             </li>
-            <li>
-                    
-            <Link style={{ textDecoration: 'none' }}
-            to="/watch-list"
-            className={activeLink === "/watch-list" ? "active" : ""}
-            >
-                {/* <span><i class="fa fa-heart" aria-hidden="true"></i></span> */}
-                <FaHeart /> {/* Heart icon */}
-              {/* Display watchListCount if it's greater than 0 */}
-              {watchListCount > 0 && (
-                <span className="badge badge-pill badge-danger ml-1 text-info">
-                  {watchListCount}
-                </span>
-              )}
-
-
-            </Link>
-            <FaMoon
-              className={`moon-icon ${isMoonFilled ? "filled" : "hollow"}`}
-              onClick={toggleTheme}
-              size={32}
-            />
-                    <div className="language-switcher">
-                  <select value={contextLang} onChange={(e) => setContextLang(e.target.value)}>
-                    <option value="ar">Arabic</option>
-                    <option value="en">English</option>
-                  </select>
-                </div>
-
-
-
-            </li>
-
-
+            <ul className="navbar-nav ml-auto">
+  <li className="nav-item">
+    <Link to="/watch-list" className={activeLink === "/watch-list" ? "active" : ""}>
+      <div className="d-flex align-items-center">
+        <FaHeart /> {/* Heart icon */}
+        {/* Display watchListCount if it's greater than 0 */}
+        {watchListCount > 0 && (
+          <span className="badge badge-pill badge-danger ml-1 text-info">
+            {watchListCount}
+          </span>
+        )}
+      </div>
+    </Link>
+  </li>
+  <li className="nav-item">
+    <FaMoon
+      className={`moon-icon ${isMoonFilled ? "filled" : "hollow"}`}
+      onClick={toggleTheme}
+      size={32}
+    />
+  </li>
+  <li className="nav-item">
+    <div className="language-switcher">
+      <select value={contextLang} onChange={(e) => setContextLang(e.target.value)}>
+        <option value="ar">Arabic</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+  </li>
+</ul>
 
 
 </ul>
