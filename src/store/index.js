@@ -6,7 +6,7 @@ import watchListReducer from './slices/watchListSlice';
 
 export default configureStore({
     reducer: {
-        watchList: watchListReducer, // Add your slice reducer here
+        watchList: watchListReducer, // Add your slice reducer here.
 
         
     }
