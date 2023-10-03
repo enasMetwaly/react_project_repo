@@ -89,7 +89,7 @@ const Header = () => {
     <FaMoon
       className={`moon-icon ${isMoonFilled ? "filled" : "hollow"}`}
       onClick={toggleTheme}
-      size={32}
+      size={25}
     />
   </li>
   <li className="nav-item">
